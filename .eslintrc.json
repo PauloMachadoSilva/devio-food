@@ -14,7 +14,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "org",
+            "prefix": "devioFood",
             "style": "camelCase"
           }
         ],
@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "org",
+            "prefix": "devio-food",
             "style": "kebab-case"
           }
         ]

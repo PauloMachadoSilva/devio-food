@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'org',
+  displayName: 'devio-food',
   preset: './jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: './coverage/org',
+  coverageDirectory: './coverage/devio-food',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

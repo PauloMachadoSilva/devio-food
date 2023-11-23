@@ -9,14 +9,14 @@
       "options": {
         "cypressConfig": "e2e/cypress.config.ts",
         "testingType": "e2e",
-        "devServerTarget": "org:serve:development"
+        "devServerTarget": "devio-food:serve:development"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "org:serve:production"
+          "devServerTarget": "devio-food:serve:production"
         },
         "ci": {
-          "devServerTarget": "org:serve-static"
+          "devServerTarget": "devio-food:serve-static"
         }
       }
     },
@@ -29,5 +29,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["org"]
+  "implicitDependencies": ["devio-food"]
 }
