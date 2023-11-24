@@ -1,0 +1,27 @@
+<div class="devio-food-menu">
+<div class="devio-food-menu__menu-container">
+  <mat-toolbar color="primary" class="menu-toolbar">
+    <div class="menu-toolbar__mobile">
+      <button  mat-icon-button (click)="openNav()"><mat-icon>menu</mat-icon></button>
+      <h2 (click)="goHome();"></h2>
+      
+    </div>
+    <div class="logo"><mat-icon class="mat-18">lunch_dining</mat-icon>fastfood</div>
+    <div class="menu-toolbar__desktop">
+        <button mat-button>Pedidos</button>
+        <button mat-button>Cozinha</button>
+        <button mat-button>Retirada</button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div #mySidepanel id="mySidepanel" class="devio-food-menu__sidepanel">
+  <div #divElements class="div-items" style="display: table;">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+  <a class="devio-food-menu__sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/home"><mat-icon class="sidepanel__mat-icon-menu">home</mat-icon><span class="item">Home</span></a>
+  <a class="devio-food-menu__sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/ingressos"><mat-icon class="sidepanel__mat-icon-menu">fastfood</mat-icon><span class="item">Pedidos</span></a>
+  <a class="devio-food-menu__sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/ingressos"><mat-icon class="sidepanel__mat-icon-menu">kitchen</mat-icon><span class="item">Cozinha</span></a>
+  <a class="devio-food-menu__sidepanel__item-menu" (click)="closeNav()" mat-list-item href="#/ingressos"><mat-icon class="sidepanel__mat-icon-menu">done_all</mat-icon><span class="item">Retirada</span></a>
+  </div>
+</div>
+</div>

@@ -1,1 +1,17 @@
+@use './style/tokens.scss' as *;
+
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$devio-food-primary: mat.define-palette(mat.$indigo-palette);
+
+html, body { height: 100%; }
+
+body, input, label, p, a, span {
+  margin: 0;
+  font-size: 12px;
+  font-family: $font-site !important; 
+}
+

@@ -1,0 +1,10 @@
+.devio-food-home {
+    &__container {
+        padding: 100px 48px 48px 48px;
+    }
+    @media (max-width: 500px) {
+        &__container {
+            padding: 100px 0px 0px 12px;
+        }
+    }
+}

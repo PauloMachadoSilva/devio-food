@@ -1,0 +1,56 @@
+@use './../../../../style/tokens.scss' as *;
+
+.devio-food-card {
+    padding-top: 48px;
+    &__card {
+        text-align: center;
+        margin-right: 32px;
+        img {
+            margin: 0 auto;
+            height: 150px;
+        }
+    }
+
+    swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        // display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        display: block;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.5) 1px 0px 5px 0px;
+        & .descricao {
+            font-size: large;
+            padding-top: 24px;
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+        }
+      }
+    
+      @media (min-width: 640px) {
+        swiper-slide {
+          width: 350px !important;
+          height: 98% !important;
+          min-height: 200px;
+        }
+      }
+    
+      swiper-slide img {
+        display: block;
+        object-fit: cover;
+      }
+      swiper-slide {
+        width: 340px;
+        padding: 5px;
+        margin-right: 32px;
+        background: transparent;
+      }
+      swiper-container {
+        padding: 16px;
+      }
+
+}

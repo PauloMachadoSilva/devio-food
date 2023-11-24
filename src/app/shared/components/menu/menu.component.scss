@@ -1,0 +1,143 @@
+@use './../../../../style/tokens.scss' as *;
+
+
+.devio-food-menu {
+    .mat-icon {
+        vertical-align: text-bottom;
+    }
+    &__menu-container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        .menu-toolbar {
+           
+            &__desktop {
+                padding: 8px;
+                button {
+                    margin: 8px;
+                    height: 30px;
+                }
+            }
+                @media (max-width: 640px) {
+                    &__mobile {
+                        display: block;
+                    }
+                    &__desktop {
+                        display: none;
+                    }
+                }
+          
+                @media (min-width: 640px) {
+                    &__desktop {
+                        display: inline-flex;
+                    }
+                    &__mobile {
+                        display: none;
+                    }
+                }
+        }
+        .logo {
+            font-size: $font-size-large;
+            font-weight: bold;
+        }
+    }
+    &__sidepanel {
+        width: 0;
+        position: fixed;
+        z-index: 5;
+        height: 350px;
+        top: 50px;
+        left: 0;
+        background-color: $green-color;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    
+        &__mat-icon-menu {
+            color: white
+        }
+
+        &__item-menu {
+            color: white;
+            font-size: 18px;
+            margin: 24px;
+            vertical-align: bottom;
+        
+        }
+        
+        &__item-menu:hover {
+            color: $green-color;
+        
+        }
+
+        a {
+            // padding: 8px 8px 8px 24px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        
+        }
+        .item {
+            margin-left: 8px;
+            font-size: $font-size-medium;
+        }
+        a:hover {
+            color: $gray-color;
+        }
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            font-size: 36px;
+        }
+        .div-items {
+            width: 300px;
+            transition: 0.5s;
+        }
+    }
+}
+
+// .menu-is-mobile .menu-toolbar {
+//     position: fixed;
+//     z-index: 2;
+// }
+
+.mat-toolbar.mat-primary {
+    background-color: $primary-color;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 9999999;
+}
+
+mat-toolbar {
+    height: 50px;
+}
+
+.img {
+    width: 60%;
+    cursor: pointer;
+}
+
+
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+
