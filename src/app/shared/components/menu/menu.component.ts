@@ -31,7 +31,15 @@ export class MenuComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/pedido']);
+  }
+
+  goCozinha() {
+    this.router.navigate(['/cozinha']);
+  }
+
+  goRetirada() {
+    this.router.navigate(['/retirada']);
   }
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 

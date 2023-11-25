@@ -56,7 +56,6 @@
 }
 .devio-food-pedido-sheet {
     &__table {
-        padding-top: $space-24x;
         padding-bottom: $space-24x;
         .table {
             border: 1px solid #ccc;
@@ -88,6 +87,28 @@
         padding-bottom: $space-16x;
         button {
             margin-left: 32px;
+        }
+    }
+    &__finalizar {
+        mat-icon {
+            vertical-align: text-bottom;
+            padding-right: $space-4x;
+        }
+        .nome {
+            width: 78%;
+            margin-right: 2%;
+        }
+        .codigo {
+            width: 20%;
+        }
+        @media (max-width: 500px) {
+            input {
+                font-size: 12px;
+            }
+        }
+        mat-list-option {
+            border: 1px solid $primary-color;
+            margin-bottom: $space-8x;
         }
     }
     

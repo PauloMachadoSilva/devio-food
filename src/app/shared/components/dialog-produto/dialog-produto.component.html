@@ -1,0 +1,20 @@
+<div mat-dialog class="mat-dialog devio-food-dialog-produto__card-produto">
+  <div class="close" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </div>
+  <h1 mat-dialog-title>{{data.titulo}}</h1>
+  <div mat-dialog-content>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+        <mat-card-content>
+          {{this.data}}
+        <hr>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" mat-button>Confirmar</button>
+        </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

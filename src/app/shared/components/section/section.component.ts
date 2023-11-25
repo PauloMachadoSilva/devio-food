@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TipoCard } from 'src/app/enums/card.enum';
 import { ICard } from 'src/app/interfaces/card';
+import { DialogProdutoComponent } from '../dialog-produto/dialog-produto.component';
 
 @Component({
   selector: 'devio-food-section',
@@ -27,10 +29,38 @@ export class SectionComponent implements OnInit {
     {titulo: 'Sobremesas', imagem:'sobremesa.png',  subTitulo: '', preco: 0, tipo:'Categorias'}
   ]
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
     console.log('Tipo',this.tipo)
+  }
+
+  selecionarProduto(item:ICard) {
+    const data = {
+      titulo: 'Revise seu pedido!',
+      corpo: '',
+      item: item
+    }
+    // this.dialogRef.close();
+    const dialogRef = this.dialog.open(DialogProdutoComponent, {
+      width: '95%',
+      height: '95%',
+      maxWidth:'100%',
+      maxHeight:'100%',
+      data: data,
+      enterAnimationDuration: '0ms'
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      // this.valInput = '';
+    });
+  }
+
+  itemSelecionado(item: ICard){
+    console.log(item);
+    this.selecionarProduto(item)
   }
 
 }

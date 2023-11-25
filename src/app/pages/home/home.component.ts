@@ -7,9 +7,10 @@ import { TipoCard } from 'src/app/enums/card.enum';
 import { SearchComponent } from 'src/app/shared/components/search/search.component';
 import { MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'devio-food-home',
   templateUrl: './home.component.html',
@@ -50,8 +51,11 @@ export class HomeComponent implements OnInit {
     imports: [
       CommonModule,
       MatButtonModule,
-      MatListModule
-   
+      MatListModule,
+      FormsModule, 
+      MatFormFieldModule, 
+      MatInputModule,
+      MatIconModule
     ],
   })
   export class SheetComponent implements OnInit {
@@ -59,6 +63,13 @@ export class HomeComponent implements OnInit {
     loginError = false;
     sucesso = false;
     btnSuesso = false;
+    isFinalizar = false;
+    btnFinalizar = 'Finalizar pedido'
+    tipoPagamento = [
+      {tipo:'Débito', icon:'credit_card'}, 
+      {tipo: 'Crédito', icon: 'credit_card'}, 
+      {tipo: 'Dinheiro', icon: 'payments'}
+    ];
     constructor(
       private _bottomSheetRef: MatBottomSheetRef<HomeComponent>,
       private formBuilder: FormBuilder,
@@ -71,6 +82,21 @@ export class HomeComponent implements OnInit {
     openLink(event: MouseEvent): void {
       this._bottomSheetRef.dismiss();
       event.preventDefault();
+    }
+
+    fecharDialog(): void {
+      this._bottomSheetRef.dismiss();
+    }
+
+    finalizarCompra(): void {
+      
+      if (this.isFinalizar) {
+        // Finzalizar venda
+      }
+      else {
+        this.isFinalizar = true;
+        this.btnFinalizar = 'Confimar'
+      }
     }
   
     criarForm() {

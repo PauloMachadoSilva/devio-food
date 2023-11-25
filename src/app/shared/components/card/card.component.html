@@ -1,7 +1,7 @@
 <div class="devio-food-card">
   <div class="devio-food-card__card">
     <swiper-container slides-per-view="auto" effect="slide" speed="500" hideOnClick="true">
-      <swiper-slide *ngFor="let card of cardsecao let i = index">
+      <swiper-slide *ngFor="let card of cardsecao let i = index" (click)="onClickProduto(card)">
           <img [ngClass]="tipoCard === tipoCards.PRODUTOS ? 'img-destaque' : 'img'" src="assets/imgs/{{card.imagem}}" />
           <span class="titulo">{{card.titulo}}</span>
           <p class="subtitulo">{{card.subTitulo}}</p>

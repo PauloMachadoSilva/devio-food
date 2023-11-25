@@ -1,4 +1,5 @@
 <div class="devio-food-pedido-sheet">
+    <h2>Resumo da compra</h2>
     <section class="devio-food-pedido-sheet__table">
         <mat-list class="table">
             <div class="descricao">
@@ -17,8 +18,45 @@
             </div>
         </mat-list>
     </section>
+    <section *ngIf="isFinalizar" class="devio-food-pedido-sheet__finalizar">
+        <div>
+            <form>
+                <mat-form-field class="nome" appearance="outline" [color]="'primary'">
+                    <mat-label>Nome do cliente</mat-label>
+                    <input matInput placeholder="Digite seu nome">
+                </mat-form-field>
+                <mat-form-field class="codigo" appearance="outline" [color]="'primary'">
+                    <mat-label>Código</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </form>
+        </div>
+        <div>
+            <h2><mat-icon>credit_card</mat-icon>Pagamento</h2>
+        </div>
+        <div>
+            <span>Selecione a forma de pagamento:</span>
+            <div>
+                <mat-selection-list #shoes [multiple]="false">
+                    <mat-list-option *ngFor="let pagamento of tipoPagamento" [value]="pagamento.tipo"><mat-icon>{{pagamento.icon}}</mat-icon>{{pagamento.tipo}}</mat-list-option>
+                  </mat-selection-list>
+            </div>
+        </div>
+        <div>
+            <form>
+                <mat-form-field class="nome" appearance="outline" [color]="'primary'">
+                    <mat-label>Valor entregue</mat-label>
+                    <input matInput placeholder="Digite seu nome">
+                </mat-form-field>
+                <mat-form-field class="codigo" appearance="outline" [color]="'primary'">
+                    <mat-label>Troco</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </form>
+        </div>
+    </section>
     <section class="devio-food-pedido-sheet__action">
-        <button mat-raised-button color="secondary" mat-button>Cancelar</button>
-        <button mat-raised-button color="primary" mat-button>Finalizar pedido</button>
+        <button mat-raised-button color="secondary" (click)="fecharDialog()" mat-button>Cancelar</button>
+        <button mat-raised-button color="primary" (click)="finalizarCompra()" mat-button>{{btnFinalizar}}</button>
     </section>
 </div>

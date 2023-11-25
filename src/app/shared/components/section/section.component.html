@@ -3,5 +3,5 @@
     <span class="devio-food-section__container__title">{{titulo}}</span>
     <p class="devio-food-section__container__sub-title">{{subTitulo}}</p>
   </div>
-  <devio-food-card [tipoCard]="tipo" [cards]="card"></devio-food-card>
+  <devio-food-card (selecionado)="itemSelecionado($event)" [tipoCard]="tipo" [cards]="card"></devio-food-card>
 </div>
