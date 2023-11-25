@@ -1,5 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnInit } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
+import { TipoCard } from 'src/app/enums/card.enum';
+import { ICard } from 'src/app/interfaces/card';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -11,15 +14,24 @@ register();
   styleUrls: ['./card.component.scss'],
   standalone: true,
   imports: [
-    MatCardModule
+    MatCardModule,
+    CommonModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CardComponent implements OnInit {
   @Input() descricao= '';
+  @Input() tipoCard!: TipoCard;
+  @Input() cards!: ICard[];
+  cardsecao!: ICard[]; 
+  tipoCards = TipoCard;
+
   constructor() { }
 
   ngOnInit() {
+    console.log('card tipo:', this.tipoCard)
+    console.log('card:', this.cards)
+    this.cardsecao = this.cards.filter(x => x.tipo === this.tipoCard)
   }
 
 }

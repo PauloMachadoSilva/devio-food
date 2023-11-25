@@ -1,0 +1,7 @@
+@use './../../../../style/tokens.scss' as *;
+
+.devio-food-search {
+    mat-form-field {
+        width: 75%;
+    }
+}

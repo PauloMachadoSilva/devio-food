@@ -1,6 +1,5 @@
 @use './../../../../style/tokens.scss' as *;
 
-
 .devio-food-menu {
     .mat-icon {
         vertical-align: text-bottom;
@@ -17,9 +16,9 @@
         .menu-toolbar {
            
             &__desktop {
-                padding: 8px;
+                padding: $space-8x;
                 button {
-                    margin: 8px;
+                    margin: $space-8x;
                     height: 30px;
                 }
             }
@@ -64,8 +63,8 @@
 
         &__item-menu {
             color: white;
-            font-size: 18px;
-            margin: 24px;
+            font-size: $font-size-large;
+            margin: $space-24x;
             vertical-align: bottom;
         
         }
@@ -76,15 +75,13 @@
         }
 
         a {
-            // padding: 8px 8px 8px 24px;
             text-decoration: none;
             color: white;
             display: block;
             transition: 0.3s;
-        
         }
         .item {
-            margin-left: 8px;
+            margin-left: $space-8x;
             font-size: $font-size-medium;
         }
         a:hover {
@@ -94,7 +91,7 @@
             position: absolute;
             top: 0;
             right: 5px;
-            font-size: 36px;
+            font-size: $font-size-xx-large;
         }
         .div-items {
             width: 300px;
@@ -102,11 +99,6 @@
         }
     }
 }
-
-// .menu-is-mobile .menu-toolbar {
-//     position: fixed;
-//     z-index: 2;
-// }
 
 .mat-toolbar.mat-primary {
     background-color: $primary-color;
@@ -124,20 +116,4 @@ mat-toolbar {
     width: 60%;
     cursor: pointer;
 }
-
-
-
-.openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-}
-
-.openbtn:hover {
-    background-color: #444;
-}
-
 

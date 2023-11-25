@@ -5,10 +5,15 @@
     &__card {
         text-align: center;
         margin-right: 32px;
-        img {
+        .img {
             margin: 0 auto;
             height: 150px;
         }
+        .img-destaque {
+            width: 100%;
+            height: 300px;
+            border-radius: 12px;
+          }
     }
 
     swiper-slide {
@@ -21,10 +26,17 @@
         cursor: pointer;
         display: block;
         border-radius: 20px;
-        box-shadow: rgba(0, 0, 0, 0.5) 1px 0px 5px 0px;
-        & .descricao {
-            font-size: large;
-            padding-top: 24px;
+        box-shadow: rgb(213 213 213 / 23%) 0px 0px 15px 2px;
+        & .titulo {
+            font-size: $font-size-large;
+            padding-top: $space-24x;
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+        }
+        & .subtitulo {
+            font-size: $font-size-small;
+            padding-bottom: $space-24x;
             display: flex;
             justify-content: center;
             font-weight: bold;
@@ -43,10 +55,14 @@
         display: block;
         object-fit: cover;
       }
+
+      .img-destaque {
+        width: 100%;
+        border-radius: 12px;
+      }
       swiper-slide {
         width: 340px;
-        padding: 5px;
-        margin-right: 32px;
+        margin-right: $space-48x;
         background: transparent;
       }
       swiper-container {

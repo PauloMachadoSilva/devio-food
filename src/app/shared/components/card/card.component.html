@@ -1,11 +1,12 @@
 <div class="devio-food-card">
   <div class="devio-food-card__card">
     <swiper-container slides-per-view="auto" effect="slide" speed="500" hideOnClick="true">
-      <swiper-slide>
-        <img class="img" src="assets/imgs/combo.png" />
-        <span class="descricao">Combos</span>
+      <swiper-slide *ngFor="let card of cardsecao let i = index">
+          <img [ngClass]="tipoCard === tipoCards.PRODUTOS ? 'img-destaque' : 'img'" src="assets/imgs/{{card.imagem}}" />
+          <span class="titulo">{{card.titulo}}</span>
+          <p class="subtitulo">{{card.subTitulo}}</p>
       </swiper-slide>
-      <swiper-slide>
+      <!-- <swiper-slide>
         <img class="img" src="assets/imgs/acomp.png" />
         <span class="descricao">Acompanhamento</span>
       </swiper-slide>
@@ -16,7 +17,7 @@
       <swiper-slide>
         <img class="img" src="assets/imgs/sobremesa.png" />
         <span class="descricao">Sobremesas</span>
-      </swiper-slide>
+      </swiper-slide> -->
     </swiper-container>
   </div>
 </div>

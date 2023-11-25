@@ -1,0 +1,14 @@
+@use './../../../../style/tokens.scss' as *;
+
+.devio-food-section {
+    margin-bottom: $space-32x;
+    &__container {
+        &__title {
+            font-size: $font-size-large;
+            font-weight: bold;
+        }
+        &__sub-title {
+            font-size: $font-size-small; 
+        }
+    }
+}
