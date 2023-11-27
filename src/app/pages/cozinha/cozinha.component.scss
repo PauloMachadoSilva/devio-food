@@ -3,7 +3,7 @@
 .devio-food-cozinha {
     padding: $space-100x $space-48x $space-48x $space-48x;
     @media (max-width: 500px) {
-        padding: 100px 12px 0px 12px;
+        padding: $space-100x $space-12x 0px $space-12x;
     }
     &__container {
         display: flex;
@@ -36,16 +36,16 @@
                     }
                     // position: absolute;
                     img {
-                        width: 60px;
-                        height: 60px;
-                        border-radius: 35px;
+                        width: $space-60x;
+                        height: $space-60x;
+                        border-radius: $space-32x;
                         object-fit: cover
                     }
                     @media (max-width: 500px) {
                         img {
-                            width: 60px;
-                            height: 60px;
-                            border-radius: 35px;
+                            width: $space-60x;
+                            height: $space-60x;
+                            border-radius: $space-32x;
                             object-fit: cover
                         }
                      }
@@ -63,9 +63,9 @@
                 }
                 &__acao {
                     button {
-                        height: 30px;
-                        width: 30px;
-                        min-width: 30px;
+                        height: $space-32x ;
+                        width: $space-32x ;
+                        min-width: $space-32x;
                         margin-left: $space-8x
                     }
                     display: flex;
@@ -110,17 +110,17 @@
                     }
                     // position: absolute;
                     img {
-                        width: 60px;
-                        height: 60px;
-                        border-radius: 35px;
+                        width: $space-60x;
+                        height: $space-60x;
+                        border-radius: $space-32x;
                         object-fit: cover
 
                     }
                     @media (max-width: 500px) {
                         img {
-                            width: 60px;
-                            height: 60px;
-                            border-radius: 35px;
+                            width: $space-60x;
+                            height: $space-60x;
+                            border-radius: $space-32x;
                             object-fit: cover
 
                         }
@@ -138,9 +138,9 @@
                 }
                 &__acao {
                     button {
-                        height: 30px;
-                        width: 30px;
-                        min-width: 30px;
+                        height: $space-32x;
+                        width: $space-32x;
+                        min-width: $space-32x;
                         margin-left: $space-4x
                     }
                     display: flex;

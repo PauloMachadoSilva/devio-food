@@ -3,7 +3,7 @@
 .devio-food-home {
     padding: $space-100x $space-48x $space-48x $space-48x;
     @media (max-width: 500px) {
-        padding: 100px 12px 0px 12px;
+        padding: $space-100x $space-12x 0px $space-12x;
     }
     &__find {
         margin-bottom: $space-32x;
@@ -12,18 +12,18 @@
     .pedido {
         position: fixed;
         overflow: hidden;
-        right: 20px;
-        bottom: 20px;
+        right: $space-24x;
+        bottom: $space-24x;
         z-index: 200;
-        padding-left: 20px;
-        padding-right: 20px;  
-        height: 48px;
-        border-radius: 40px;
+        padding-left: $space-24x;
+        padding-right: $space-24x;  
+        height: $space-48x;
+        border-radius: $space-48x;
         background-color: $primary-color;
-        background-position: 9px 50%;
-        background-size: 30px;
+        background-position: $space-8x 50%;
+        background-size: $space-32x;
         background-repeat: no-repeat;
-        box-shadow: 0 0 6px 0 rgba(75,231,106,0), 0 20px 24px -4px rgba(0,0,0,.12);
+        box-shadow: 0 0 $space-8x 0 rgba(75,231,106,0), 0 $space-24x $space-24x -4px rgba(0,0,0,.12);
         -webkit-transition: all 1s cubic-bezier(.19,1,.22,1);
         transition: all 1s cubic-bezier(.19,1,.22,1);
         text-decoration: none;
@@ -34,30 +34,30 @@
         box-sizing: border-box;
         &__text{
           position: relative;
-          padding-top: 16px;
-          padding-bottom: 17px;
-          color: #fff;
-          font-size: 12px;
-          line-height: 14px;
+          padding-top: $space-16x;
+          padding-bottom: $space-16x;
+          color: $white-color;
+          font-size: $space-12x;
+          line-height: $space-16x;
           font-weight: 600;
-          letter-spacing: 1px;
+          letter-spacing: $space-2x;
           justify-content: flex-start;
           display: flex;
           overflow: hidden;
   
         }
         .mat-icon {
-          bottom: 5px;
+          bottom: $space-4x;
           position: relative;
-          margin-right: 5px;
+          margin-right: $space-4x;
         }
         .carrinho-contador {
-            width: 25px;
-            border-radius: 20px;
-            background-color: red;
+            width: $space-24x;
+            border-radius: $space-16x;
+            background-color: $alert-color2;
             position: relative;
             display: flex;
-            bottom: 5px;
+            bottom: $space-4x;
             justify-content: center;
             align-items: center;
             margin-left: 2px;
@@ -69,8 +69,8 @@
     &__table {
         padding-bottom: $space-24x;
         .table {
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 1px solid $gray-color;
+            border-radius: $space-4x;
         }
         .item {
             display: inline-flex;
@@ -79,10 +79,10 @@
         }
         .separador {
             margin: 16px;
-            border-top: 1px dashed #ccc;
+            border-top: 1px dashed $gray-color;
         }
         .total {
-            margin: 16px;
+            margin: $space-16x;
             display: grid;
             justify-content: flex-end;
             text-align: right;
@@ -97,7 +97,7 @@
         justify-content: flex-end;
         padding-bottom: $space-16x;
         button {
-            margin-left: 32px;
+            margin-left: $space-32x;
         }
     }
     &__finalizar {
@@ -114,7 +114,7 @@
         }
         @media (max-width: 500px) {
             input {
-                font-size: 12px;
+                font-size: $space-12x;
             }
         }
         mat-list-option {
@@ -127,7 +127,7 @@
 ::ng-deep {
     .mat-bottom-sheet-container {
         min-width: 100vw;
-        padding: 0px 32px 0px 16px;
+        padding: 0px $space-32x 0px $space-16x;
     }
     @media (max-width: 500px) {
         .mat-bottom-sheet-container {

@@ -20,17 +20,17 @@
         .close {
             display: flex;
             justify-content: flex-end;
-            font-size: 24px;
-            padding: 16px;
+            font-size: $space-24x;
+            padding: $space-16x;
             cursor: pointer;
         }
 
         .mat-mdc-form-field {
-            padding-bottom: 16px;
+            padding-bottom: $space-16x;
         }
 
         mat-card-actions {
-            padding: 0 16px;
+            padding: 0 $space-16x;
             display: block;
             button {
                 padding: 0px;
@@ -40,20 +40,20 @@
             }
 
             span {
-                padding: 24px;
+                padding: $space-24x;
                 display: flex;
                 justify-content: center;
             }
 
             strong {
                 color: $primary-color;
-                padding-left: 4px;
+                padding-left: $space-4x;
                 cursor: pointer;
             }
         }
 
         .mat-dialog {
-            margin: 16px;
+            margin: $space-16x;
         }
 
         .mat-mdc-form-field {
@@ -73,7 +73,7 @@
 
         &__item {
             .mdc-list-item.mdc-list-item--with-one-line {
-                height: 150px;
+                height: $space-150x;
                 padding: $space-32x;
             }
             .descricao {
@@ -86,14 +86,14 @@
                 img {
                     width: 120px;
                     height: 120px;
-                    border-radius: 70px;
+                    border-radius: $space-70x;
                     object-fit: cover
                 }
                 @media (max-width: 500px) {
                     img {
-                        width: 55px;
-                        height: 55px;
-                        border-radius: 35px;
+                        width: $space-60x;
+                        height: $space-60x;
+                        border-radius: $space-32x;
                     }
                  }
             }
@@ -111,7 +111,7 @@
                }
                
                @media (max-width: 500px) {
-                    margin-left: 70px;
+                    margin-left: $space-70x;
                 }
 
             }
@@ -170,7 +170,7 @@
 
             .table {
                 border: 1px solid #ccc;
-                border-radius: 5px;
+                border-radius: $space-4x;
             }
 
             .item {
@@ -180,12 +180,12 @@
             }
 
             .separador {
-                margin: 16px;
+                margin: $space-16x;
                 border-top: 1px dashed #ccc;
             }
 
             .total {
-                margin: 16px;
+                margin: $space-16x;
                 display: grid;
                 justify-content: flex-end;
                 text-align: right;

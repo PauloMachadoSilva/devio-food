@@ -4,8 +4,8 @@
     .close {
         display: flex;
         justify-content: flex-end;
-        font-size: 24px;
-        padding: 16px;
+        font-size: $space-24x;
+        padding: $space-16x;
         cursor: pointer;
     }
 
@@ -34,7 +34,7 @@
 
 
         .mat-mdc-form-field {
-            padding-bottom: 16px;
+            padding-bottom: $space-16x;
         }
 
     }

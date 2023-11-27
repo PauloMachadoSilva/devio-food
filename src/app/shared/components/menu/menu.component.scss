@@ -19,7 +19,7 @@
                 padding: $space-8x;
                 button {
                     margin: $space-8x;
-                    height: 30px;
+                    height: $space-32x;
                 }
             }
                 @media (max-width: 640px) {
@@ -50,12 +50,12 @@
         position: fixed;
         z-index: 5;
         height: 350px;
-        top: 65px;
+        top: $space-60x;
         left: 0;
         background-color: $green-color;
         overflow-x: hidden;
         transition: 0.5s;
-        padding-top: 60px;
+        padding-top: $space-60x;
     
         &__mat-icon-menu {
             color: white
@@ -83,6 +83,7 @@
         .item {
             margin-left: $space-8x;
             font-size: $font-size-medium;
+            font-size: $space-18x;
         }
         a:hover {
             color: $gray-color;
@@ -90,7 +91,7 @@
         .closebtn {
             position: absolute;
             top: 0;
-            right: 5px;
+            right: $space-4x;
             font-size: $font-size-xx-large;
         }
         .div-items {
@@ -109,7 +110,7 @@
 }
 
 mat-toolbar {
-    height: 65px;
+    height: $space-60x;
 }
 
 .img {

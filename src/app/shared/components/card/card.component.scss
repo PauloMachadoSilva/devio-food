@@ -1,31 +1,31 @@
 @use './../../../../style/tokens.scss' as *;
 
 .devio-food-card {
-    padding-top: 48px;
+    padding-top: $space-48x;
     &__card {
         text-align: center;
-        margin-right: 32px;
+        margin-right: $space-32x;
         .img {
             margin: 0 auto;
-            height: 150px;
+            height: $space-150x;
         }
         .img-destaque {
             width: 100%;
             height: 300px;
-            border-radius: 12px;
+            border-radius: $space-12x;
           }
     }
 
     swiper-slide {
         text-align: center;
-        font-size: 18px;
+        font-size: $space-18x;
         background: #fff;
         // display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
         display: block;
-        border-radius: 20px;
+        border-radius: $space-24x;
         box-shadow: rgb(213 213 213 / 23%) 0px 0px 15px 2px;
         & .titulo {
             font-size: $font-size-large;
@@ -48,7 +48,7 @@
         swiper-slide {
           width: 350px !important;
           height: 98% !important;
-          min-height: 200px;
+          min-height: $space-200x;
         }
       }
     
@@ -59,7 +59,7 @@
 
       .img-destaque {
         width: 100%;
-        border-radius: 12px 12px 0 0px;
+        border-radius: $space-12x $space-12x 0 0px;
       }
       swiper-slide {
         width: 340px;
@@ -67,7 +67,7 @@
         background: transparent;
       }
       swiper-container {
-        padding: 16px;
+        padding: $space-16x;
       }
 
 }
