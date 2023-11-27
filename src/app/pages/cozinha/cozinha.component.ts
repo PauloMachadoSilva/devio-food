@@ -9,7 +9,7 @@ import { PedidosService } from '../../services/pedidos/pedidos.service';
 import { catchError, retry } from 'rxjs';
 import { IPedidos } from '../../interfaces/pedidos';
 import { CommonModule } from '@angular/common';
-import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 
