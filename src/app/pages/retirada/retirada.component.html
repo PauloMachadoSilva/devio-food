@@ -1,2 +1,41 @@
 <devio-food-menu></devio-food-menu>
-<img style="margin-top: 65px;" src="assets/imgs/retirada.png">
+<section class="devio-food-retirada">
+  <div class="devio-food-retirada__container">
+    <div class="devio-food-retirada__container__preparando">
+      <h1>Preparando:</h1>
+      <section class="preparando">
+        <ng-container *ngFor="let pedido of pedidos; let i=index" class="conteudo" mat-dialog-content>
+          <div class="conteudo" mat-dialog-content>
+            <mat-card>
+              <mat-card-content>
+                <div class="pedido">
+                  <div class="pedido__descricao">
+                    <span class="nome">200 - {{pedido.nome}}</span>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </ng-container>
+      </section>
+    </div>
+    <div class="devio-food-retirada__container__pronto">
+      <h1>Pronto:</h1>
+      <section class="prontos">
+        <ng-container *ngFor="let pedidoPronto of pedidosProntos; let i=index" class="conteudo" mat-dialog-content>
+          <div class="conteudo" mat-dialog-content>
+            <mat-card>
+              <mat-card-content>
+                <div class="pedido">
+                  <div class="pedido__descricao">
+                    <span class="nome">200 - {{pedidoPronto.nome}}</span>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </ng-container>
+      </section>
+    </div>
+  </div>
+</section>

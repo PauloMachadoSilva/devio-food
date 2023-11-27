@@ -1,0 +1,83 @@
+@use './../../../style/tokens.scss' as *;
+
+.devio-food-retirada {
+    padding: $space-100x $space-48x $space-48x $space-48x;
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        .conteudo {
+            margin-bottom: $space-16x;
+        }
+        &__preparando {
+            .mat-mdc-form-field {
+                width: 100%;
+            }
+            width: 50%;
+            border-right: $space-2x solid #0e0e0e;
+            margin-right: $space-48x;
+            .mat-mdc-card {
+                width: 90%;
+            }
+            .mat-mdc-card-content {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .pedido {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &__imagem {
+                    display: flex;
+                    img {
+                        width: 70px;
+                        height: 70px;
+                        border-radius: 35px;
+                    }
+                    @media (max-width: 500px) {
+                        img {
+                            width: 70px;
+                            height: 70px;
+                            border-radius: 35px;
+                        }
+                     }
+                }
+                &__descricao {
+                    display: grid;
+                    .nome {
+                        color: $gray-color;
+                        font-size: $font-size-x-large;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        &__pronto {
+            .mat-mdc-form-field {
+                width: 100%;
+            }
+            width: 50%;
+            margin-right: $space-48x;
+            .mat-mdc-card {
+                width: 90%;
+            }
+            .mat-mdc-card-content {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            .pedido {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &__descricao {
+                    display: grid;
+                    .nome {
+                        color: $primary-color;
+                        font-size: $font-size-x-large;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+ }

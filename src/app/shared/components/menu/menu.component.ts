@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
   @Input() onMenu = false;
   @ViewChild('mySidepanel') mySidepanel: ElementRef<HTMLDivElement> = {} as ElementRef;;
@@ -16,10 +16,6 @@ export class MenuComponent implements OnInit {
   constructor(
     private router: Router,
   ) { }
-
-  ngOnInit() {
-    console.log('menu');
-  }
 
   openNav() {
     this.mySidepanel.nativeElement.style.width = '280px'    

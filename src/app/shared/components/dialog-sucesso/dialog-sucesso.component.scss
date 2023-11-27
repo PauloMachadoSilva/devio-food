@@ -1,0 +1,61 @@
+@use './../../../../style/tokens.scss' as *;
+
+.devio-food-dialog-sucesso {
+    .close {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 24px;
+        padding: 16px;
+        cursor: pointer;
+    }
+
+    &__menssagem {
+        h1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .mdc-dialog__title {
+            text-transform: uppercase;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mat-mdc-card-content {
+            text-align: left;
+        }
+
+
+
+        .mat-mdc-form-field {
+            padding-bottom: 16px;
+        }
+
+
+    }
+}
+
+::ng-deep {
+    .mat-mdc-dialog-container .mdc-dialog__content {
+        padding: 0;
+    }
+
+    .cdk-overlay-container {
+        z-index: 9999999;
+    }
+
+    .mdc-list-item__primary-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mat-mdc-dialog-content {
+        max-height: fit-content;
+    }
+
+    .mat-mdc-card-header {
+        padding: 0 !important;
+    }
+
+}

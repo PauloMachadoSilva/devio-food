@@ -11,7 +11,7 @@ describe('RetiradaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RetiradaComponent ]
+      imports: [ RetiradaComponent ]
     })
     .compileComponents();
   }));

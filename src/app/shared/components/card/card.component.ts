@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
-import { TipoCard } from 'src/app/enums/card.enum';
-import { ICard } from 'src/app/interfaces/card';
+import { TipoCard } from '../../../enums/card.enum';
+import { ICard } from '../../../interfaces/card';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -22,21 +22,18 @@ register();
 export class CardComponent implements OnInit {
   @Input() descricao= '';
   @Input() tipoCard!: TipoCard;
-  @Input() cards!: ICard[];
+  @Input() cards!: ICard[] | null;
   @Output() selecionado = new EventEmitter<ICard>();
-  cardsecao!: ICard[]; 
+  cardSecao!: ICard[]; 
   tipoCards = TipoCard;
 
   constructor() { }
 
   ngOnInit() {
-    console.log('card tipo:', this.tipoCard)
-    console.log('card:', this.cards)
-    this.cardsecao = this.cards.filter(x => x.tipo === this.tipoCard)
+    this.cardSecao = this.cards!.filter(x => x.tipo === this.tipoCard)
   }
 
   onClickProduto(card : ICard) {
-    console.log(card);
     this.selecionado.emit(card);
   }
 

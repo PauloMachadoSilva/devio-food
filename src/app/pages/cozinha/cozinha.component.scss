@@ -1,0 +1,123 @@
+@use './../../../style/tokens.scss' as *;
+
+.devio-food-cozinha {
+    padding: $space-100x $space-48x $space-48x $space-48x;
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        .conteudo {
+            margin-bottom: $space-16x;
+        }
+        &__preparando {
+            .mat-mdc-form-field {
+                width: 100%;
+            }
+            width: 50%;
+            border-right: $space-2x solid #0e0e0e;
+            margin-right: $space-48x;
+            .mat-mdc-card {
+                width: 90%;
+                margin-bottom: $space-24x;
+            }
+            .pedido {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &__imagem {
+                    display: flex;
+                    // position: absolute;
+                    img {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 35px;
+                        object-fit: cover
+                    }
+                    @media (max-width: 500px) {
+                        img {
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 35px;
+                            object-fit: cover
+                        }
+                     }
+                }
+                &__descricao {
+                    display: grid;
+                    .nome {
+                        font-size: $font-size-medium;
+                        font-weight: bold;
+                    }
+                    .item {
+                        font-size: $font-size-small;
+                        width: 150px;
+                    }
+                }
+                &__acao {
+                    button {
+                        height: 30px;
+                        width: 30px;
+                        min-width: 30px;
+                        margin-left: $space-8x
+                    }
+                    display: flex;
+                }
+            }
+        }
+        &__pronto {
+            .mat-mdc-form-field {
+                width: 100%;
+            }
+            width: 50%;
+            margin-right: $space-48x;
+            .mat-mdc-card {
+                width: 90%;
+                margin-bottom: $space-24x;
+            }
+            .pedido {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &__imagem {
+                    display: flex;
+                    // position: absolute;
+                    img {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 35px;
+                        object-fit: cover
+
+                    }
+                    @media (max-width: 500px) {
+                        img {
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 35px;
+                            object-fit: cover
+
+                        }
+                     }
+                }
+                &__descricao {
+                    display: grid;
+                    .nome {
+                        font-size: $font-size-medium;
+                        font-weight: bold;
+                    }
+                    .item {
+                        font-size: $font-size-small;
+                    }
+                }
+                &__acao {
+                    button {
+                        height: 30px;
+                        width: 30px;
+                        min-width: 30px;
+                        margin-left: $space-4x
+                    }
+                    display: flex;
+                }
+            }
+        }
+    }
+ }

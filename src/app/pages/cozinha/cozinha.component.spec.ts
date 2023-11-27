@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { CozinhaComponent } from './cozinha.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 describe('CozinhaComponent', () => {
   let component: CozinhaComponent;
@@ -11,7 +12,10 @@ describe('CozinhaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CozinhaComponent ]
+      imports: [CozinhaComponent],
+      providers: [
+        provideAnimations()
+      ]
     })
     .compileComponents();
   }));

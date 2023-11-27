@@ -2,14 +2,18 @@
 <div class="devio-food-home">
   <section class="devio-food-home__find">
     <h1>Seja bem vindo!</h1>
-    <devio-food-search></devio-food-search>
+    <devio-food-search (itemSearch)="consultarProduto($event)"></devio-food-search>
   </section>
   <section class="devio-food-home__sections">
-    <devio-food-section [tipo]="tipoCard.CATEGORIAS" [titulo]="'Categorias'" [subTitulo]="categorias"></devio-food-section>
-    <devio-food-section [tipo]="tipoCard.PRODUTOS" [titulo]="'Produtos'" [subTitulo]="produtos"></devio-food-section>
+    <ng-container *ngIf="showSecoes">
+      <devio-food-section [section]="secoes" [tipo]="tipoCard.CATEGORIAS" [titulo]="'Categorias'" [subTitulo]="categorias"></devio-food-section>
+    </ng-container>
+    <ng-container *ngIf="showProdutos">
+      <devio-food-section [section]="svcProdutos" [tipo]="tipoCard.PRODUTOS" [titulo]="'Produtos'" [subTitulo]="produtos" (carrinho)="obterDadosCarrinho($event)"></devio-food-section>
+    </ng-container>
   </section>
   <div class="pedido" mat-raised-button (click)="openBottomSheet()">
-    <div class="pedido__text"><mat-icon>shopping_cart</mat-icon>Pedido</div>
+    <div class="pedido__text"><mat-icon>shopping_cart</mat-icon>Pedido <span *ngIf="carrinhoCompra" class="carrinho-contador">{{carrinhoCompra ? carrinhoCompra.items.length : ''}}</span></div>
   </div>
 </div>
 

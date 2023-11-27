@@ -1,22 +1,22 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
 import { SearchComponent } from './search.component';
-
-describe('SearchComponent', () => {
+import { provideAnimations } from '@angular/platform-browser/animations';
+describe('CancelButtonComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [SearchComponent, HttpClientModule],
+      providers: [
+        provideAnimations(),
+        HttpClient
+        
+      ]
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

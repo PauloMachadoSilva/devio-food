@@ -1,2 +1,71 @@
 <devio-food-menu></devio-food-menu>
-<img style="margin-top: 65px;" src="assets/imgs/cozinha.png">
+<section class="devio-food-cozinha">
+  <div class="devio-food-cozinha__container">
+    <div class="devio-food-cozinha__container__preparando">
+      <h1>Preparando:</h1>
+      <section class="preparando">
+        <ng-container *ngFor="let pedido of pedidos; let i=index" class="conteudo" mat-dialog-content>
+            <mat-card>
+              <mat-card-content>
+                <div class="pedido">
+                  <div class="pedido__imagem">
+                    <img src="assets/imgs/smash.jpeg">
+                  </div>
+                  <div class="pedido__descricao">
+                    <span class="nome">200 - {{pedido.nome}}</span>
+                    <span *ngFor="let items of pedido.items; let i = index" class="item">{{i+1}}x {{items.titulo}}</span>
+                  </div>
+                  <div class="pedido__acao">
+                    <button (click)="recusarPedido(pedido ? pedido._id: '')" mat-fab color="warn" aria-label="Example icon button with a bookmark icon">
+                      <mat-icon>close</mat-icon>
+                    </button> 
+                    <button (click)="confimarPedido(pedido ? pedido._id: '')" mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+                      <mat-icon>done</mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <section class="observacoes" *ngIf="pedido.observacao">
+                  <h3>Observações:</h3>
+                  <div>
+                    <mat-form-field appearance="outline" [color]="'primary'">
+                      <textarea readonly  matInput rows="3" cols="40" placeholder="Adicione uma observação ao pedido">{{pedido.observacao}}</textarea>
+                    </mat-form-field>
+                  </div>
+                </section>
+              </mat-card-content>
+            </mat-card>          
+        </ng-container>
+      </section>
+    </div>
+    <div class="devio-food-cozinha__container__pronto">
+      <h1>Pronto:</h1>
+      <section class="prontos">
+        <ng-container *ngFor="let pedidoPronto of pedidosProntos; let i=index" class="conteudo" mat-dialog-content>
+            <div class="conteudo" mat-dialog-content>
+                <mat-card>
+                  <mat-card-content>
+                    <div class="pedido">
+                      <div class="pedido__imagem">
+                        <img src="assets/imgs/smash.jpeg">
+                      </div>
+                      <div class="pedido__descricao">
+                        <span class="nome">200 - Nome</span>
+                        <span *ngFor="let items of pedidoPronto.items; let i = index" class="item">{{i+1}}x {{items.titulo}}</span>
+                      </div>
+                      <div class="pedido__acao">
+                        <button (click)="retornarPedido(pedidoPronto ? pedidoPronto._id: '')" mat-fab color="warn" aria-label="Example icon button with a bookmark icon">
+                          <mat-icon>close</mat-icon>
+                        </button> 
+                        <button (click)="confimarRetirada(pedidoPronto ? pedidoPronto._id: '')" mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+                          <mat-icon>done</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>          
+            </div>
+        </ng-container>
+      </section>
+    </div>
+  </div>
+</section>

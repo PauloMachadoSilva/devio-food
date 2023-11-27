@@ -3,7 +3,7 @@
 .devio-food-home {
     padding: 100px 48px 48px 48px;
     @media (max-width: 500px) {
-        padding: 100px 0px 0px 12px;
+        padding: 100px 12px 0px 12px;
     }
     &__find {
         margin-bottom: $space-32x;
@@ -50,6 +50,17 @@
           bottom: 5px;
           position: relative;
           margin-right: 5px;
+        }
+        .carrinho-contador {
+            width: 25px;
+            border-radius: 20px;
+            background-color: red;
+            position: relative;
+            display: flex;
+            bottom: 5px;
+            justify-content: center;
+            align-items: center;
+            margin-left: 2px;
         }
   
     }

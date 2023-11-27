@@ -1,8 +1,13 @@
 <section class="devio-food-search">
-  <form class="example-form">
-    <mat-form-field appearance="outline" [color]="'primary'">
-      <mat-label>Pesquisar</mat-label>
-      <input matInput placeholder="O que você procura?">
-    </mat-form-field>
+  <form class="">
+    <div class="devio-food-search__acao">
+      <mat-form-field appearance="outline" [color]="'primary'">
+        <mat-label>Pesquisar</mat-label>
+        <input #input matInput placeholder="O que você procura?">
+      </mat-form-field>
+      <button (click)="consultarProduto(input.value)" mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+        <mat-icon>search</mat-icon>
+      </button> 
+    </div>
     </form>
 </section>

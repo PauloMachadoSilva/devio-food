@@ -4,17 +4,17 @@
         <mat-list class="table">
             <div class="descricao">
                 <!-- <div *ngFor="let ingresso of svcIngressos"> -->
-                <mat-list-item>
+                <mat-list-item *ngFor="let carrinho of this.carrinhoCompra?.items; let i= index">
                     <div class="item">
-                        <span>1x Combo</span>
-                        <span>R$ 90,00</span>
+                        <span>{{i+1}}x {{carrinho.titulo}}</span>
+                        <span>R$ {{carrinho.preco}}</span>
                     </div>
                 </mat-list-item>
             </div>
-            <hr class="separador">
+            <hr *ngIf="this.carrinhoCompra" class="separador">
             <div class="total">
                 <span>Total do pedido</span>
-                <p class="total__valor">R$ 90</p>
+                <p class="total__valor">R$ {{this.carrinhoCompra ? this.carrinhoCompra.total : '0' }}</p>
             </div>
         </mat-list>
     </section>
@@ -37,7 +37,7 @@
         <div>
             <span>Selecione a forma de pagamento:</span>
             <div>
-                <mat-selection-list #shoes [multiple]="false">
+                <mat-selection-list [multiple]="false">
                     <mat-list-option *ngFor="let pagamento of tipoPagamento" [value]="pagamento.tipo"><mat-icon>{{pagamento.icon}}</mat-icon>{{pagamento.tipo}}</mat-list-option>
                   </mat-selection-list>
             </div>
@@ -56,7 +56,7 @@
         </div>
     </section>
     <section class="devio-food-pedido-sheet__action">
-        <button mat-raised-button color="secondary" (click)="fecharDialog()" mat-button>Cancelar</button>
+        <button mat-stroked-button color="secondary" (click)="fecharDialog()" mat-button>Cancelar</button>
         <button mat-raised-button color="primary" (click)="finalizarCompra()" mat-button>{{btnFinalizar}}</button>
     </section>
 </div>

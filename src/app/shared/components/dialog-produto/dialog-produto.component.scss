@@ -1,20 +1,22 @@
-
 @use './../../../../style/tokens.scss' as *;
 
-.devio-food-dialog-produto {  
+.devio-food-dialog-produto {
     &__card-produto {
         h1 {
             display: flex;
             justify-content: center;
         }
+
         .mdc-dialog__title {
             text-transform: uppercase;
             margin: 0 auto;
             text-align: center;
         }
+
         .mat-mdc-card-content {
             text-align: left;
         }
+
         .close {
             display: flex;
             justify-content: flex-end;
@@ -22,6 +24,7 @@
             padding: 16px;
             cursor: pointer;
         }
+
         .mat-mdc-form-field {
             padding-bottom: 16px;
         }
@@ -29,59 +32,197 @@
         mat-card-actions {
             padding: 0 16px;
             display: block;
-            // justify-content: space-between;
             button {
                 padding: 0px;
-                width: 100%;
+                width: 40%;
+                margin-right: $space-24x;
                 cursor: pointer;
             }
+
             span {
                 padding: 24px;
                 display: flex;
                 justify-content: center;
             }
+
             strong {
                 color: $primary-color;
                 padding-left: 4px;
                 cursor: pointer;
             }
         }
+
         .mat-dialog {
             margin: 16px;
         }
-        .mat-mdc-form-field { 
+
+        .mat-mdc-form-field {
             width: 100%;
         }
+
         .mat-mdc-outlined-button.mat-primary {
             color: $primary-color;
             background-color: transparent;
             border: 1px solid $primary-color;
         }
-       
-         mat-card {
+    
+        mat-card {
             background-color: transparent;
             box-shadow: none;
+        }
+
+        &__item {
+            .mdc-list-item.mdc-list-item--with-one-line {
+                height: 150px;
+            }
+            .descricao {
+              background-color: $gray-light-color;
+            }
+           
+            .imagem {
+                display: flex;
+                position: absolute;
+                img {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 70px;
+                    object-fit: cover
+                }
+                @media (max-width: 500px) {
+                    img {
+                        width: 70px;
+                        height: 70px;
+                        border-radius: 35px;
+                    }
+                 }
+            }
+            .texto {
+                display: grid;
+                margin-left: 150px;
+               &__titulo {
+                font-size: $font-size-medium;
+                font-weight: bold;
+               }
+               &__sub {
+                font-size: $font-size-small;
+               } 
+               &__acao {
+               }
+               
+               @media (max-width: 500px) {
+                    margin-left: 100px;
+                }
+
+            }
+            .valor {
+                font-size: $font-size-large !important;
+                font-weight: bold;
+                display: grid;
+                text-align: right;
+                .item {
+                    font-size: $font-size-small;
+                }
+                .total {
+                    font-size: $font-size-large;
+                    font-weight: bold;
+                }
+            }
+         }
+
+        &__forma-pagamento {
+            .mdc-list-item.mdc-list-item--with-one-line {
+                height: $space-70x;
+            }
+
+            .adicional {
+                display: flex;
+
+                img {
+                    margin-right: $space-8x ;
+                    object-fit: cover
+                }
+
+                &__descricao {
+                    display: grid;
+
+                    .nome {
+                        font-size: $font-size-medium;
+                        font-weight: bold;
+                    }
+
+                    .sub {
+                        font-size: $font-size-small;
+                    }
+                }
+            }
+
+            .valor {
+                align-items: center;
+                display: flex;
+                font-size: $font-size-medium;
+            }
+
+        }
+
+        &__table {
+            padding-bottom: $space-24x;
+
+            .table {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .item {
+                display: inline-flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .separador {
+                margin: 16px;
+                border-top: 1px dashed #ccc;
+            }
+
+            .total {
+                margin: 16px;
+                display: grid;
+                justify-content: flex-end;
+                text-align: right;
+
+                &__valor {
+                    font-size: $font-size-large;
+                    font-weight: bold;
+                }
+            }
+        }
+        .actions {
+            display: flex;
+            justify-content: space-around;
         }
     }
 }
 
-::ng-deep{
+::ng-deep {
     .mat-mdc-dialog-container .mdc-dialog__content {
         padding: 0;
-     }
-     .cdk-overlay-container {
+    }
+
+    .cdk-overlay-container {
         z-index: 9999999;
     }
-    .mdc-list-item__primary-text{
+
+    .mdc-list-item__primary-text {
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
+
     .mat-mdc-dialog-content {
         max-height: fit-content;
     }
-  
+
     .mat-mdc-card-header {
         padding: 0 !important;
     }
-    
+
 }

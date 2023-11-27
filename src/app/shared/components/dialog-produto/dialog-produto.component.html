@@ -8,13 +8,88 @@
       <mat-card-header>
         <mat-card-subtitle></mat-card-subtitle>
       </mat-card-header>
-        <mat-card-content>
-          {{this.data}}
-        <hr>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" mat-button>Confirmar</button>
-        </mat-card-actions>
+      <mat-card-content>
+        <section class="devio-food-dialog-produto__card-produto__item">
+          <mat-list class="table">
+              <div class="descricao">
+                  <mat-list-item>
+                      <div class="imagem">
+                          <img src="assets/imgs/{{this.item.imagem}}">
+                      </div>
+                      <div class="texto">
+                        <span class="texto__titulo">{{this.item.titulo}}</span>
+                        <span lass="texto__sub">{{this.item.subTitulo}}</span>
+                        <span lass="texto__acao">
+                            <!-- <input readonly devioFoodInputNumber
+                              (valorCampo)="getValorCampo(ingresso._id, $event, ingresso.valor);" type="number"
+                              min="0" max="{{ingresso.limite - ingresso.vendido}}" value="0"> -->
+                            <input style="text-align: center;text-align: center;" readonly devioFoodInputNumber
+                            (valorCampo)="getValorProduto($event);"  
+                            type="number"
+                              min="0" max="1000" value="0">
+                        </span>
+                      </div>
+                      <div class="valor">
+                        <span class="item">R$ {{this.item.preco}}</span>
+                        <ng-container *ngIf="qtdeTotal > 0">
+                          <span class="item">Total</span>
+                          <span class="total">R$ {{this.valorTotal}}</span>
+                        </ng-container>
+                      </div>
+                  </mat-list-item>
+              </div>
+          </mat-list>
+      </section>
+
+        <section>
+          <h3>Selecione a forma de pagamento:</h3>
+          <div class="devio-food-dialog-produto__card-produto__forma-pagamento">
+            <mat-selection-list>
+              <mat-list-option *ngFor="let adicional of adicionais"
+                [value]="adicional.nome">
+                <div class="adicional">
+                  <img src="assets/imgs/{{adicional.img}}">
+                  <div class="adicional__descricao">
+                    <span class="nome">{{adicional.nome}}</span>
+                    <span class="sub">{{adicional.sub}}</span>
+                  </div>
+                </div>
+                <span class="valor">{{adicional.valor}}</span>
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+        </section>
+        <section>
+          <h3>Observações:</h3>
+          <div>
+            <mat-form-field appearance="outline" [color]="'primary'">
+              <textarea  matInput rows="3" cols="40" placeholder="Adicione uma observação ao pedido"></textarea>
+            </mat-form-field>
+          </div>
+        </section>
+        <section *ngIf="qtdeTotal > 0" class="devio-food-dialog-produto__card-produto__table">
+          <mat-list class="table">
+              <div class="descricao">
+                  <!-- <div *ngFor="let ingresso of svcIngressos"> -->
+                  <mat-list-item>
+                      <div class="item">
+                          <span>{{qtdeTotal}} x {{item.titulo}}</span>
+                          <span>R$ {{item.preco}}</span>
+                      </div>
+                  </mat-list-item>
+              </div>
+              <hr class="separador">
+              <div class="total">
+                  <span>Total do pedido</span>
+                  <p class="total__valor">R$ {{this.valorTotal}}</p>
+              </div>
+          </mat-list>
+      </section>
+      </mat-card-content>
+      <mat-card-actions class="actions">
+        <button (click)="adicionarCarrinhoMais()" mat-stroked-button color="secondary" mat-button>Adicionar mais</button>
+        <button (click)="adicionarCarrinhoFinalizar()" mat-raised-button color="primary" mat-button>Comprar</button>
+      </mat-card-actions>
     </mat-card>
   </div>
 </div>

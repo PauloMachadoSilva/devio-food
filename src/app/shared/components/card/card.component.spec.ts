@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -11,6 +12,7 @@ describe('CardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [HttpClient]
     })
     .compileComponents();
   }));

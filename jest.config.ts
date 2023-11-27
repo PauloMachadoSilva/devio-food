@@ -1,7 +1,8 @@
 /* eslint-disable */
 export default {
   displayName: 'devio-food',
-  preset: './jest.preset.js',
+  preset: 'ts-jest/presets/js-with-ts',
+  testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory: './coverage/devio-food',
   transform: {
@@ -12,6 +13,7 @@ export default {
         stringifyContentPathRegex: '\\.(html|svg)$',
       },
     ],
+    
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   snapshotSerializers: [

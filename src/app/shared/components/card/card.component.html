@@ -1,23 +1,12 @@
-<div class="devio-food-card">
+<div *ngIf="cardSecao" class="devio-food-card">
   <div class="devio-food-card__card">
     <swiper-container slides-per-view="auto" effect="slide" speed="500" hideOnClick="true">
-      <swiper-slide *ngFor="let card of cardsecao let i = index" (click)="onClickProduto(card)">
+      <swiper-slide *ngFor="let card of cardSecao; let i = index" (click)="onClickProduto(card)">
           <img [ngClass]="tipoCard === tipoCards.PRODUTOS ? 'img-destaque' : 'img'" src="assets/imgs/{{card.imagem}}" />
+          <span>Código: {{card.codigo}}</span>
           <span class="titulo">{{card.titulo}}</span>
           <p class="subtitulo">{{card.subTitulo}}</p>
       </swiper-slide>
-      <!-- <swiper-slide>
-        <img class="img" src="assets/imgs/acomp.png" />
-        <span class="descricao">Acompanhamento</span>
-      </swiper-slide>
-      <swiper-slide>
-        <img class="img" src="assets/imgs/bebidas.png" />
-        <span class="descricao">Bebidas</span>
-      </swiper-slide>
-      <swiper-slide>
-        <img class="img" src="assets/imgs/sobremesa.png" />
-        <span class="descricao">Sobremesas</span>
-      </swiper-slide> -->
     </swiper-container>
   </div>
 </div>
