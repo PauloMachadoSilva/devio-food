@@ -2,11 +2,9 @@
 <div class="devio-food-menu__menu-container">
   <mat-toolbar color="primary" class="menu-toolbar">
     <div class="menu-toolbar__mobile">
-      <button  mat-icon-button (click)="openNav()"><mat-icon>menu</mat-icon></button>
-      <h2 (click)="goHome();"></h2>
-      
+      <button  mat-icon-button (click)="openNav()"><mat-icon>menu</mat-icon></button>      
     </div>
-    <div class="logo"><mat-icon class="mat-18">lunch_dining</mat-icon>fastfood</div>
+    <div (click)="goHome()" class="logo"><mat-icon class="mat-18">lunch_dining</mat-icon>fastfood</div>
     <div class="menu-toolbar__desktop">
         <button mat-button (click)="goHome()">Pedidos</button>
         <button mat-button (click)="goCozinha()">Cozinha</button>

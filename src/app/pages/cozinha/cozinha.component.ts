@@ -9,6 +9,8 @@ import { PedidosService } from '../../services/pedidos/pedidos.service';
 import { catchError, retry } from 'rxjs';
 import { IPedidos } from '../../interfaces/pedidos';
 import { CommonModule } from '@angular/common';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -34,6 +36,7 @@ pedidos!: IPedidos[];
 pedidosProntos!: IPedidos[];
   constructor(
     private _pedido: PedidosService,
+    public dialogs: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -81,6 +84,7 @@ pedidosProntos!: IPedidos[];
     .subscribe((svc:any) => {
       this.pedidos = svc ? svc : null
     });
+      this.dialog('Pedido pronto!')
   }
 
   recusarPedido(id: any) {
@@ -92,7 +96,9 @@ pedidosProntos!: IPedidos[];
         console.log(err);
         return err;
       }))
-    .subscribe();
+      .subscribe(()=>
+      this.dialog('Pedido recusado pelo cliente!')
+    );
   }
 
   retornarPedido(id: any) {
@@ -104,7 +110,9 @@ pedidosProntos!: IPedidos[];
         console.log(err);
         return err;
       }))
-    .subscribe();
+      .subscribe(()=>
+      this.dialog('Pedido enviado para preparo!')
+    );
   }
 
   confimarRetirada(id: any) {
@@ -116,7 +124,30 @@ pedidosProntos!: IPedidos[];
         console.log(err);
         return err;
       }))
-    .subscribe();
+    .subscribe(()=>
+      this.dialog('Pedido cancelado!')
+    );
+  }
+
+  dialog(texto:string) {
+    const data = {
+      titulo: 'Aviso!',
+      corpo: '',
+      item: texto
+    }
+    const dialogRef = this.dialogs.open(DialogComponent, {
+      width: '70%',
+      height: '30%',
+      maxWidth:'100%',
+      maxHeight:'100%',
+      data: data,
+      enterAnimationDuration: '0ms'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      window.location.reload();
+    });
+
   }
 
 }

@@ -1,7 +1,7 @@
 @use './../../../style/tokens.scss' as *;
 
 .devio-food-home {
-    padding: 100px 48px 48px 48px;
+    padding: $space-100x $space-48x $space-48x $space-48x;
     @media (max-width: 500px) {
         padding: 100px 12px 0px 12px;
     }
@@ -126,11 +126,12 @@
 }
 ::ng-deep {
     .mat-bottom-sheet-container {
-        min-width: 99vw;
+        min-width: 100vw;
+        padding: 0px 32px 0px 16px;
     }
     @media (max-width: 500px) {
         .mat-bottom-sheet-container {
-            min-width: 97vw;
+            min-width: 100vw;
         }
     }
 }

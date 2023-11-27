@@ -2,6 +2,7 @@ import { ICard } from "./card";
 
 export interface IPedidos {
     _id?: string,
+    codigo?: number;
     titulo: string;
     total: number;
     quantidade: number;
@@ -9,4 +10,7 @@ export interface IPedidos {
     nome?:string;
     observacao?:string;
     status?: string;
+    tipoPagamento?:string;
+    valorPago?:number;
+    troco?:number;
     }

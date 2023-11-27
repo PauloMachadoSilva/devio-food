@@ -1,15 +1,17 @@
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DialogProdutoComponent } from './dialog-produto.component';
+import { DialogComponent } from './dialog.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
-describe('DialogProdutoComponent', () => {
-  let component: DialogProdutoComponent;
-  let fixture: ComponentFixture<DialogProdutoComponent>;
+describe('DialogComponent', () => {
+  let component: DialogComponent;
+  let fixture: ComponentFixture<DialogComponent>;
+
   const data = {
     corpo: "",
     item : { 
@@ -21,28 +23,22 @@ describe('DialogProdutoComponent', () => {
     },
     titulo: "Revise seu pedido!"
   }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DialogProdutoComponent],
+      imports: [DialogComponent],
       providers: [
         {provide: MatDialogRef, useValue:{}},
         {provide: MAT_DIALOG_DATA, useValue: data},
-        provideAnimations()
-      ]
+        provideAnimations()      
+      ],      
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogProdutoComponent);
+    fixture = TestBed.createComponent(DialogComponent);
     component = fixture.componentInstance;
-    component.item =
-    {codigo:'', titulo: 'Smash da casa', imagem:'smash.jpeg', subTitulo: '2x hamburger 200g', preco: 30, tipo:'Produtos'}
-    component.adicionais = [
-      {nome:'Bacon',sub: '10g', img:'bacon.png',valor: 1 }, 
-      {nome: 'Cheddar',sub: '10g', img: 'cheddar.png', valor: 1}, 
-      {nome: 'Molho',sub: 'Barbecue', img: 'molho.png', valor: 1}
-    ];
     fixture.detectChanges();
   });
 

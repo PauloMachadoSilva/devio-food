@@ -19,12 +19,12 @@ export class PedidosService {
   constructor(private _httpClient: HttpClient) {}
 
   consultarPedidos(status: string) {
-    return this._httpClient.get(`${environment.apiLocal}/pedidos/${status}`, httpOptions);
+    return this._httpClient.get(`${environment.apiProd}/pedidos/${status}`, httpOptions);
   }
 
   adicionarPedido(carrinho: ICarrinhoCompras): Observable<any> {
     return this._httpClient
-      .post(`${environment.apiLocal}/pedidos`, carrinho, httpOptions)
+      .post(`${environment.apiProd}/pedidos`, carrinho, httpOptions)
       .pipe(tap());
   }
 
@@ -33,7 +33,7 @@ export class PedidosService {
         _id: id
     }
     return this._httpClient
-      .post(`${environment.apiLocal}/pedidos/confirmar`, data, httpOptions)
+      .post(`${environment.apiProd}/pedidos/confirmar`, data, httpOptions)
       .pipe(tap());
   }
 
@@ -42,7 +42,7 @@ export class PedidosService {
         _id: id
     }
     return this._httpClient
-      .post(`${environment.apiLocal}/pedidos/recusar`, data, httpOptions)
+      .post(`${environment.apiProd}/pedidos/recusar`, data, httpOptions)
       .pipe(tap());
   }
 
@@ -51,7 +51,7 @@ export class PedidosService {
         _id: id
     }
     return this._httpClient
-      .post(`${environment.apiLocal}/pedidos/retornar`, data, httpOptions)
+      .post(`${environment.apiProd}/pedidos/retornar`, data, httpOptions)
       .pipe(tap());
   }
 
@@ -60,13 +60,13 @@ export class PedidosService {
         _id: id
     }
     return this._httpClient
-      .post(`${environment.apiLocal}/pedidos/retirada`, data, httpOptions)
+      .post(`${environment.apiProd}/pedidos/retirada`, data, httpOptions)
       .pipe(tap());
   }
 
   ConsultarPedidosRetirada(): Observable<any> {
     return this._httpClient
-      .get(`${environment.apiLocal}/pedidos/retirada`, httpOptions)
+      .get(`${environment.apiProd}/pedidos/retirada`, httpOptions)
       .pipe(tap());
   }
 }

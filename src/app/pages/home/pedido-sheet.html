@@ -4,14 +4,14 @@
         <mat-list class="table">
             <div class="descricao">
                 <!-- <div *ngFor="let ingresso of svcIngressos"> -->
-                <mat-list-item *ngFor="let carrinho of this.carrinhoCompra?.items; let i= index">
+                <mat-list-item *ngFor="let carrinho of carrinhoCompra?.items; let i= index">
                     <div class="item">
                         <span>{{i+1}}x {{carrinho.titulo}}</span>
                         <span>R$ {{carrinho.preco}}</span>
                     </div>
                 </mat-list-item>
             </div>
-            <hr *ngIf="this.carrinhoCompra" class="separador">
+            <hr *ngIf="carrinhoCompra" class="separador">
             <div class="total">
                 <span>Total do pedido</span>
                 <p class="total__valor">R$ {{this.carrinhoCompra ? this.carrinhoCompra.total : '0' }}</p>
@@ -20,14 +20,14 @@
     </section>
     <section *ngIf="isFinalizar" class="devio-food-pedido-sheet__finalizar">
         <div>
-            <form>
+            <form [formGroup]="formCliente" novalidate>
                 <mat-form-field class="nome" appearance="outline" [color]="'primary'">
                     <mat-label>Nome do cliente</mat-label>
-                    <input matInput placeholder="Digite seu nome">
+                    <input formControlName="nome" matInput placeholder="Digite seu nome">
                 </mat-form-field>
                 <mat-form-field class="codigo" appearance="outline" [color]="'primary'">
                     <mat-label>Código</mat-label>
-                    <input matInput>
+                    <input readonly formControlName="codigo" matInput>
                 </mat-form-field>
             </form>
         </div>
@@ -35,28 +35,30 @@
             <h2><mat-icon>credit_card</mat-icon>Pagamento</h2>
         </div>
         <div>
-            <span>Selecione a forma de pagamento:</span>
-            <div>
-                <mat-selection-list [multiple]="false">
-                    <mat-list-option *ngFor="let pagamento of tipoPagamento" [value]="pagamento.tipo"><mat-icon>{{pagamento.icon}}</mat-icon>{{pagamento.tipo}}</mat-list-option>
-                  </mat-selection-list>
-            </div>
-        </div>
-        <div>
-            <form>
+            <form [formGroup]="formPagamento" novalidate>
+                <div>
+                    <span>Selecione a forma de pagamento:</span>
+                    <div>
+                        <mat-selection-list formControlName="pagamento" [multiple]="false">
+                            <mat-list-option *ngFor="let pagamento of tipoPagamento"
+                                [value]="pagamento.tipo"><mat-icon>{{pagamento.icon}}</mat-icon>{{pagamento.tipo}}</mat-list-option>
+                        </mat-selection-list>
+                    </div>
+                </div>
                 <mat-form-field class="nome" appearance="outline" [color]="'primary'">
                     <mat-label>Valor entregue</mat-label>
-                    <input matInput placeholder="Digite seu nome">
+                    <input formControlName="valor" matInput placeholder="Digite o valor">
                 </mat-form-field>
                 <mat-form-field class="codigo" appearance="outline" [color]="'primary'">
                     <mat-label>Troco</mat-label>
-                    <input matInput>
+                    <input formControlName="troco" matInput>
                 </mat-form-field>
             </form>
         </div>
     </section>
     <section class="devio-food-pedido-sheet__action">
         <button mat-stroked-button color="secondary" (click)="fecharDialog()" mat-button>Cancelar</button>
-        <button mat-raised-button color="primary" (click)="finalizarCompra()" mat-button>{{btnFinalizar}}</button>
+        <button [disabled]="(isFinalizar ? (!formCliente.valid || !formPagamento.valid) : carrinhoCompra ? false : true)" mat-raised-button
+            color="primary" (click)="finalizarCompra()" mat-button>{{btnFinalizar}}</button>
     </section>
 </div>

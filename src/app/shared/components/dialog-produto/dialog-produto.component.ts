@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Component, Inject, OnInit } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputNumberDirective } from '../../../directives/input-number.directive';
 import { ICard } from '../../../interfaces/card';
@@ -27,6 +27,7 @@ import { ICarrinhoCompras } from '../../../interfaces/carrinho-compras';
     MatListModule,
     MatInputModule,
     FormsModule, 
+    ReactiveFormsModule,
     MatFormFieldModule,
     InputNumberDirective
   ],
@@ -40,24 +41,28 @@ export class DialogProdutoComponent implements OnInit {
   item!: ICard;
   valorTotal = 0;
   qtdeTotal = 0;
-  produto!: ICarrinhoCompras
-  produtoMais!: ICarrinhoCompras
-  arrayItems: ICard[] = []
+  produto!: ICarrinhoCompras;
+  produtoMais!: ICarrinhoCompras;
+  arrayItems: ICard[] = [];
+  formProduto!: FormGroup;
+
 
   adicionais = [
     {nome:'Bacon',sub: '10g', img:'bacon.png',valor: 1 }, 
     {nome: 'Cheddar',sub: '10g', img: 'cheddar.png', valor: 1}, 
-    {nome: 'Molho Acompanhamento',sub: 'Barbecue', img: 'molho.png', valor: 1}
+    {nome: 'Molho',sub: 'Barbecue', img: 'molho.png', valor: 1}
   ];
 
   constructor(
     public dialogRef: MatDialogRef<DialogProdutoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public _carrinhoService: CarrinhoComprasService,
+    private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit() {
     this.item = this.data.item
+    this.criarForm();
   }
 
   closeDialog(carrinho?: string): void {
@@ -65,22 +70,28 @@ export class DialogProdutoComponent implements OnInit {
   }
 
   adicionarCarrinhoFinalizar() {
-    const carrinhoAnterior = this._carrinhoService.obterCarrinhoCompras;
-    const carrinhoMais = this.tratarCarrinho(carrinhoAnterior)
-    //pegar carrinho anterior e somar 
-    if(this.item) {
-      this._carrinhoService.criarCarrinho(carrinhoMais)
-      this.closeDialog('aberto');
+    if(this.formProduto.valid && this.qtdeTotal > 0) {
+      const formProduto: any = this.formProduto.value;
+      const carrinhoAnterior = this._carrinhoService.obterCarrinhoCompras;
+      const carrinhoMais = this.tratarCarrinho(carrinhoAnterior)
+      carrinhoMais.observacao = formProduto.observacoes;
+      //pegar carrinho anterior e somar 
+      if(this.item) {
+        this._carrinhoService.criarCarrinho(carrinhoMais)
+        this.closeDialog('aberto');
+      }
     }
   }
 
   adicionarCarrinhoMais() {
-    const carrinhoAnterior = this._carrinhoService.obterCarrinhoCompras;
-    const carrinhoMais = this.tratarCarrinho(carrinhoAnterior)
-    //pegar carrinho anterior e somar 
-    if(this.item) {
-      this._carrinhoService.criarCarrinho(carrinhoMais)
-      this.closeDialog();
+    if(this.formProduto.valid && this.qtdeTotal > 0) {
+      const carrinhoAnterior = this._carrinhoService.obterCarrinhoCompras;
+      const carrinhoMais = this.tratarCarrinho(carrinhoAnterior)
+      //pegar carrinho anterior e somar 
+      if(this.item) {
+        this._carrinhoService.criarCarrinho(carrinhoMais)
+        this.closeDialog();
+      }
     }
   }
 
@@ -130,6 +141,12 @@ export class DialogProdutoComponent implements OnInit {
     };
     this.valorTotal = itemPreco;
     this.qtdeTotal = itemQtde;
-    //Criando array de Participantes ingressos inclusos
+  }
+
+  criarForm() {
+    this.formProduto = this.formBuilder.group({
+      observacoes: ['', []],
+      tipoPagamento: ['', [Validators.required, Validators.minLength(1)]],
+    });
   }
 }

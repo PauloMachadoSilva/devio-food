@@ -23,6 +23,6 @@ export class SecoesService {
    * @author Paulo Eduardo
    */
   consultaSecoes() {
-    return this._httpClient.get(`${environment.apiLocal}/secoes`, httpOptions);
+    return this._httpClient.get(`${environment.apiProd}/secoes`, httpOptions);
   }
 }

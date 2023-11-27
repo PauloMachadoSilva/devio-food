@@ -29,66 +29,60 @@
                               min="0" max="1000" value="0">
                         </span>
                       </div>
-                      <div class="valor">
-                        <span class="item">R$ {{this.item.preco}}</span>
-                        <ng-container *ngIf="qtdeTotal > 0">
-                          <span class="item">Total</span>
-                          <span class="total">R$ {{this.valorTotal}}</span>
-                        </ng-container>
-                      </div>
                   </mat-list-item>
               </div>
           </mat-list>
       </section>
-
-        <section>
-          <h3>Selecione a forma de pagamento:</h3>
-          <div class="devio-food-dialog-produto__card-produto__forma-pagamento">
-            <mat-selection-list>
-              <mat-list-option *ngFor="let adicional of adicionais"
-                [value]="adicional.nome">
-                <div class="adicional">
-                  <img src="assets/imgs/{{adicional.img}}">
-                  <div class="adicional__descricao">
-                    <span class="nome">{{adicional.nome}}</span>
-                    <span class="sub">{{adicional.sub}}</span>
+      <form [formGroup]="formProduto" novalidate>
+          <section>
+            <h3>Selecione o acompanhamento:</h3>
+            <div class="devio-food-dialog-produto__card-produto__forma-pagamento">
+              <mat-selection-list formControlName="tipoPagamento">
+                <mat-list-option *ngFor="let adicional of adicionais"
+                  [value]="adicional.nome">
+                  <div class="adicional">
+                    <img src="assets/imgs/{{adicional.img}}">
+                    <div class="adicional__descricao">
+                      <span class="nome">{{adicional.nome}}</span>
+                      <span class="sub">{{adicional.sub}}</span>
+                    </div>
                   </div>
+                  <span class="valor">R$ {{adicional.valor}}</span>
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+          </section>
+          <section>
+            <h3>Observações:</h3>
+            <div>
+              <mat-form-field appearance="outline" [color]="'primary'">
+                <textarea formControlName="observacoes"  matInput rows="3" cols="40" placeholder="Adicione uma observação ao pedido"></textarea>
+              </mat-form-field>
+            </div>
+          </section>
+          <section *ngIf="qtdeTotal > 0" class="devio-food-dialog-produto__card-produto__table">
+            <mat-list class="table">
+                <div class="descricao">
+                    <!-- <div *ngFor="let ingresso of svcIngressos"> -->
+                    <mat-list-item>
+                        <div class="item">
+                            <span>{{qtdeTotal}} x {{item.titulo}}</span>
+                            <span>R$ {{item.preco}}</span>
+                        </div>
+                    </mat-list-item>
                 </div>
-                <span class="valor">{{adicional.valor}}</span>
-              </mat-list-option>
-            </mat-selection-list>
-          </div>
-        </section>
-        <section>
-          <h3>Observações:</h3>
-          <div>
-            <mat-form-field appearance="outline" [color]="'primary'">
-              <textarea  matInput rows="3" cols="40" placeholder="Adicione uma observação ao pedido"></textarea>
-            </mat-form-field>
-          </div>
-        </section>
-        <section *ngIf="qtdeTotal > 0" class="devio-food-dialog-produto__card-produto__table">
-          <mat-list class="table">
-              <div class="descricao">
-                  <!-- <div *ngFor="let ingresso of svcIngressos"> -->
-                  <mat-list-item>
-                      <div class="item">
-                          <span>{{qtdeTotal}} x {{item.titulo}}</span>
-                          <span>R$ {{item.preco}}</span>
-                      </div>
-                  </mat-list-item>
-              </div>
-              <hr class="separador">
-              <div class="total">
-                  <span>Total do pedido</span>
-                  <p class="total__valor">R$ {{this.valorTotal}}</p>
-              </div>
-          </mat-list>
-      </section>
+                <hr class="separador">
+                <div class="total">
+                    <span>Total do pedido</span>
+                    <p class="total__valor">R$ {{this.valorTotal}}</p>
+                </div>
+            </mat-list>
+          </section>
+      </form>
       </mat-card-content>
       <mat-card-actions class="actions">
-        <button (click)="adicionarCarrinhoMais()" mat-stroked-button color="secondary" mat-button>Adicionar mais</button>
-        <button (click)="adicionarCarrinhoFinalizar()" mat-raised-button color="primary" mat-button>Comprar</button>
+        <button [disabled]="!formProduto.valid || this.qtdeTotal === 0" (click)="adicionarCarrinhoMais()" mat-stroked-button color="secondary" mat-button>Adicionar mais</button>
+        <button [disabled]="!formProduto.valid || this.qtdeTotal === 0" (click)="adicionarCarrinhoFinalizar()" mat-raised-button color="primary" mat-button>Comprar</button>
       </mat-card-actions>
     </mat-card>
   </div>

@@ -24,14 +24,14 @@ export class ProdutosService {
    */
   consultarProdutos() {
     return this._httpClient.get(
-      `${environment.apiLocal}/produtos`,
+      `${environment.apiProd}/produtos`,
       httpOptions
     );
   }
 
   consultarProduto(string: string) {
     return this._httpClient
-      .post(`${environment.apiLocal}/produtos/${string}`, httpOptions)
+      .post(`${environment.apiProd}/produtos/${string}`, httpOptions)
       .pipe(tap());
   }
 }

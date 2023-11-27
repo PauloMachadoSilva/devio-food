@@ -2,6 +2,9 @@
 
 .devio-food-cozinha {
     padding: $space-100x $space-48x $space-48x $space-48x;
+    @media (max-width: 500px) {
+        padding: 100px 12px 0px 12px;
+    }
     &__container {
         display: flex;
         justify-content: space-between;
@@ -18,6 +21,9 @@
             margin-right: $space-48x;
             .mat-mdc-card {
                 width: 90%;
+                @media (max-width: 500px) { 
+                    width: 98%;
+                }
                 margin-bottom: $space-24x;
             }
             .pedido {
@@ -25,7 +31,9 @@
                 justify-content: space-between;
                 align-items: center;
                 &__imagem {
-                    display: flex;
+                    @media (max-width: 500px) {
+                        display: none;
+                    }
                     // position: absolute;
                     img {
                         width: 60px;
@@ -62,6 +70,21 @@
                     }
                     display: flex;
                 }
+
+                &__acao-mobile {
+                    display: none;
+                    @media (max-width: 1024px) {
+                        display: flex;
+                        margin-top: $space-24x;
+                        justify-content: space-between;
+                     }    
+                 }
+
+                 &__acao {
+                    @media (max-width: 1024px) {
+                        display: none;
+                     } 
+                 }
             }
         }
         &__pronto {
@@ -72,6 +95,9 @@
             margin-right: $space-48x;
             .mat-mdc-card {
                 width: 90%;
+                @media (max-width: 500px) {
+                    width: 98%;
+                 }
                 margin-bottom: $space-24x;
             }
             .pedido {
@@ -79,7 +105,9 @@
                 justify-content: space-between;
                 align-items: center;
                 &__imagem {
-                    display: flex;
+                    @media (max-width: 500px) {
+                        display: none;
+                    }
                     // position: absolute;
                     img {
                         width: 60px;
@@ -117,6 +145,21 @@
                     }
                     display: flex;
                 }
+
+                &__acao-mobile {
+                    display: none;
+                    @media (max-width: 1024px) {
+                        display: flex;
+                        margin-top: $space-24x;
+                        justify-content: space-between;
+                     }    
+                 }
+
+                 &__acao {
+                    @media (max-width: 1024px) {
+                        display: none;
+                     } 
+                 }
             }
         }
     }

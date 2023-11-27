@@ -12,7 +12,7 @@
                     <img src="assets/imgs/smash.jpeg">
                   </div>
                   <div class="pedido__descricao">
-                    <span class="nome">200 - {{pedido.nome}}</span>
+                    <span class="nome">{{pedido.codigo}} - {{pedido.nome}}</span>
                     <span *ngFor="let items of pedido.items; let i = index" class="item">{{i+1}}x {{items.titulo}}</span>
                   </div>
                   <div class="pedido__acao">
@@ -24,12 +24,20 @@
                     </button>
                   </div>
                 </div>
-                <section class="observacoes" *ngIf="pedido.observacao">
-                  <h3>Observações:</h3>
-                  <div>
+                <section class="observacoes" >
+                  <div *ngIf="pedido.observacao">
+                    <h3>Observações:</h3>
                     <mat-form-field appearance="outline" [color]="'primary'">
                       <textarea readonly  matInput rows="3" cols="40" placeholder="Adicione uma observação ao pedido">{{pedido.observacao}}</textarea>
                     </mat-form-field>
+                  </div>
+                  <div class="pedido__acao-mobile">
+                    <button (click)="recusarPedido(pedido ? pedido._id: '')" mat-fab color="warn" aria-label="Example icon button with a bookmark icon">
+                      <mat-icon>close</mat-icon>
+                    </button> 
+                    <button (click)="confimarPedido(pedido ? pedido._id: '')" mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+                      <mat-icon>done</mat-icon>
+                    </button>
                   </div>
                 </section>
               </mat-card-content>
@@ -49,7 +57,7 @@
                         <img src="assets/imgs/smash.jpeg">
                       </div>
                       <div class="pedido__descricao">
-                        <span class="nome">200 - Nome</span>
+                        <span class="nome">{{pedidoPronto.codigo}} - {{pedidoPronto.nome}}</span>
                         <span *ngFor="let items of pedidoPronto.items; let i = index" class="item">{{i+1}}x {{items.titulo}}</span>
                       </div>
                       <div class="pedido__acao">
@@ -61,6 +69,16 @@
                         </button>
                       </div>
                     </div>
+                    <section class="observacoes" >
+                      <div class="pedido__acao-mobile">
+                        <button (click)="retornarPedido(pedidoPronto ? pedidoPronto._id: '')" mat-fab color="warn" aria-label="Example icon button with a bookmark icon">
+                          <mat-icon>close</mat-icon>
+                        </button> 
+                        <button (click)="confimarRetirada(pedidoPronto ? pedidoPronto._id: '')" mat-fab color="primary" aria-label="Example icon button with a bookmark icon">
+                          <mat-icon>done</mat-icon>
+                        </button>
+                      </div>
+                    </section>
                   </mat-card-content>
                 </mat-card>          
             </div>

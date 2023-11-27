@@ -7,7 +7,7 @@ import { TipoCard } from '../../enums/card.enum';
 import { SearchComponent } from '../../shared/components/search/search.component';
 import { MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -157,7 +157,8 @@ export class HomeComponent implements OnInit {
       MatFormFieldModule, 
       MatInputModule,
       MatIconModule,
-      HttpClientModule
+      HttpClientModule,
+      ReactiveFormsModule
     ],
     providers: [
       CarrinhoComprasService,
@@ -178,7 +179,9 @@ export class HomeComponent implements OnInit {
       {tipo: 'Crédito', icon: 'credit_card'}, 
       {tipo: 'Dinheiro', icon: 'payments'}
     ];
-    carrinhoCompra!: any;
+    carrinhoCompra!: ICarrinhoCompras;
+    formCliente!: FormGroup;
+    formPagamento!: FormGroup;
 
     constructor(
       private _bottomSheetRef: MatBottomSheetRef<HomeComponent>,
@@ -209,17 +212,27 @@ export class HomeComponent implements OnInit {
     }
 
     finalizarCompra(): void {
-      if (this.isFinalizar) {
-        this._pedido.adicionarPedido(this.carrinhoCompra)
-        .subscribe((svc:any) => {
-          this.modalSucesso();
-          localStorage.clear();
-        });
-      }
-      else {
-        this.isFinalizar = true;
-        this.btnFinalizar = 'Confimar'
-      }
+      
+        if (this.isFinalizar) {
+          if(this.formCliente.valid && this.formPagamento.valid) {
+            const formCliente: any = this.formCliente.value;
+            const formPagamento: any = this.formPagamento.value;
+            this.carrinhoCompra.codigo = formCliente.codigo; 
+            this.carrinhoCompra.nome = formCliente.nome; 
+            this.carrinhoCompra.tipoPagamento = formPagamento.pagamento[0]; 
+            this.carrinhoCompra.valorPago = formPagamento.valor; 
+            this.carrinhoCompra.troco = formPagamento.troco; 
+            this._pedido.adicionarPedido(this.carrinhoCompra)
+            .subscribe((svc:any) => {
+              this.modalSucesso();
+              localStorage.clear();
+            });
+          }
+        }
+        else {
+          this.isFinalizar = true;
+          this.btnFinalizar = 'Confimar'
+        }
     }
 
     modalSucesso() {
@@ -232,19 +245,20 @@ export class HomeComponent implements OnInit {
       });
     
       dialogRef.afterClosed().subscribe(result => {
-        this.carrinhoCompra = null;
+        // this.carrinhoCompra = null;
       });
     }
-  
+    
     criarForm() {
-      this.formDuvidas = this.formBuilder.group({
+      this.formCliente = this.formBuilder.group({
         nome: ['', [Validators.required, Validators.minLength(5)]],
-        celular: ['', [Validators.required, Validators.minLength(5)]],
-        email: new FormControl(null, [
-          Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-        ]),
-        duvida: ['', [Validators.required, Validators.minLength(5)]],
+        codigo: [Math.floor(100000 + Math.random() * 900000), [Validators.required, Validators.minLength(5)]],
+      });
+
+      this.formPagamento= this.formBuilder.group({
+        pagamento: ['', [Validators.required, Validators.minLength(1)]],
+        valor: ['', [Validators.required, Validators.minLength(1)]],
+        troco: ['', [Validators.required, Validators.minLength(1)]],
       });
     }
 

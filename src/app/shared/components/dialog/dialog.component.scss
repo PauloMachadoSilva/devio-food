@@ -1,6 +1,6 @@
 @use './../../../../style/tokens.scss' as *;
 
-.devio-food-dialog-sucesso {
+.devio-food-dialog {
     .close {
         display: flex;
         justify-content: flex-end;
@@ -37,7 +37,9 @@
             padding-bottom: 16px;
         }
 
-
+    }
+    .mat-mdc-card {
+        box-shadow: none;
     }
 }
 
