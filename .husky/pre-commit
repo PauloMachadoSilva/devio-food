@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+echo "### Executando LINT e Testes unitários ###"
+
+npx nx lint &&
+npm run test --coverage
