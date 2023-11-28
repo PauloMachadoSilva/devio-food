@@ -117,7 +117,7 @@ pedidosProntos!: IPedidos[];
 
   confimarRetirada(id: any) {
     this._pedido
-    .recusarPedido(id)
+    .confirmarRetirada(id)
     .pipe(
       retry(3),
       catchError((err) => {
@@ -125,7 +125,7 @@ pedidosProntos!: IPedidos[];
         return err;
       }))
     .subscribe(()=>
-      this.dialog('Pedido cancelado!')
+      this.dialog('Pedido retirado!')
     );
   }
 
